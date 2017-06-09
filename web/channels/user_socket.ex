@@ -5,7 +5,9 @@ defmodule WebsocketsTest.UserSocket do
   channel "room:*", WebsocketsTest.RoomChannel
 
   ## Transports
-  transport :websocket, Phoenix.Transports.WebSocket
+  transport :websocket, Phoenix.Transports.WebSocket,
+    timeout: 6000000, # 1 hour
+    transport_log: :debug
   # transport :longpoll, Phoenix.Transports.LongPoll
 
   # Socket params are passed from the client and can

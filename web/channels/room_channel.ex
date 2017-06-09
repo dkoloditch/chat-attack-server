@@ -11,9 +11,22 @@ defmodule WebsocketsTest.RoomChannel do
 
   def handle_in("new_message", message, socket) do
     {status, result} = Poison.Parser.parse(message)
-    resp = %{userId: result["userId"], body: result["body"]}
+    resp = %{
+      userId: result["userId"],
+      body: result["body"],
+      timestamp: result["timestamp"]
+    }
     broadcast! socket, "new_message", resp
-    # {:noreply, socket}
-    {:reply, {:ok, resp}, socket}
+    {:noreply, socket}
+    # {:reply, {:ok, resp}, socket}
+  end
+
+  def handle_in("color_switch", message, socket) do
+    {status, result} = Poison.Parser.parse(message)
+    resp = %{
+      color_switch: result["color_switch"]
+    }
+    broadcast! socket, "color_switch", resp
+    {:noreply, socket}
   end
 end
