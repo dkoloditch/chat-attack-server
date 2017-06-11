@@ -31,6 +31,7 @@ defmodule WebsocketsTest.Mixfile do
     [{:phoenix, "~> 1.2.4"},
      {:phoenix_pubsub, "~> 1.0"},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:exredis, ">= 0.2.4"}]
   end
 end
